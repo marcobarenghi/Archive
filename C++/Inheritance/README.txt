@@ -1,4 +1,4 @@
-Simple exercise to short inheritance between classes.
+Simple exercise to show inheritance between classes.
 The class particle is the a class with two private members (charge and mass) and a few methods
 The class astrobody inherits particle with additional private members and methods
 
