@@ -1,0 +1,11 @@
+capito;genau;Ja, genau!
+per esempio;zum Beispiel;ich liebe sport, zum beispiel liebe ich bouldern
+ancora;wieder;\
+sempre;immer;\
+a volte;manchmal;\
+spesso;oft;\
+ognuno;jeder;\
+altro;anderer;\
+insieme;gemeindsam;oder zusammen
+dopo;danach;\
+qualcuno;jemand;\

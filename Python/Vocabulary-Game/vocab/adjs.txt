@@ -1,0 +1,17 @@
+piccolo;klein;\
+grosso;gross;\
+importante;wichtig;\
+facile;einfach;
+difficile;schwierig;\
+pragmatico;pragmatisch;\
+pratico;handlich;\
+schematico;schematisch;\
+aperto;oeffnen;\
+chiuso;geschlossen;\
+lento;langsam;\
+veloce;schnell;\
+onesto;ehrlich;\
+sottile;duenn;\
+spesso;dick;\
+pesante;schwer;\
+leggero;leicht;\

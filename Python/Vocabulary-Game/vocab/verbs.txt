@@ -1,0 +1,20 @@
+lavorare;arbeiten;arbeitend-gearbeitet
+avere;haben;habend-gehabt
+essere;sein;seiend-gewesen
+fare;machen;machend-gemacht
+camminare;laufen;lief-gelaufen
+diventare;werden;wurde-geworden
+capire;wissen;wusste-gewusst
+pensare;denken;dachte-gedacht 
+credere;glauben;glaubte-geblaubt
+comprare;kaufen;kaufte-gekauft
+pagare;bezahlen;bezahlte;bezahlt
+allenarsi;trainieren;trainierte-trainiert
+vedere;sehen;sah-gesehen
+cercare;suchen;suchte-gesucht
+tentare;versuchen;veruschte-versucht
+venire;kommen;kam-gekommen
+realizzare;realisieren;realisierte-realisiert
+conoscere;kennen lernen;lernte kennen - kennengelert
+condividere;teilen;teilte-geteilt
+raccontare;erzaehlen;erzaehlte-erzaehlt
