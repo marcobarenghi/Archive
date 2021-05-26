@@ -8,3 +8,10 @@ The elements are then sorted and swapped using the standard technique. In the en
 This approach is characterized by a computational time that goes as O(nlog(n)).
 
 In main.C this property is tested by measuring the time required to sort arrays of different sizes.
+
+##############
+second commit:
+The class vect was updated, the random seed is passed when an object is initialized.
+In functions.h tthere are wo quick functions to calculate mean and standard deviation of an array.
+The timing test is now repeated Ntests times for each given number of members of the array, in order to calculate mean and std.
+Better statistics are displayed. 

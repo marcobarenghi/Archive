@@ -72,9 +72,9 @@ vect::vect(){
 	for(int i=0;i<m_N;i++)
 		m_v[i]=0;
 };
-vect::vect(unsigned int N){
+vect::vect(unsigned int N, int seed){
 	m_N=N;
-	srand (1111);
+	srand (seed);
 	m_v=new double [N];
 	for(int i=0;i<N;i++)
 		m_v[i]= rand() / double(RAND_MAX);

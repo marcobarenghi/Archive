@@ -3,7 +3,7 @@
 class vect{
 public:
 	vect();
-	vect(unsigned int);
+	vect(unsigned int, int seed);
 	~vect();
 	unsigned int getN() const;
 	void print();
