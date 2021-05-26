@@ -18,7 +18,6 @@ float mean(double *array, int N){
 		
 };
 
-
 float rms(double *array2, int N){
 	float mean = 0;
 	float rms = 0;

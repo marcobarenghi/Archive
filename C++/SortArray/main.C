@@ -3,6 +3,7 @@
 #include "functions.h"
 #include <chrono>
 #include <cstring>
+#include <fstream> 
 using namespace std;
 using namespace std::chrono;
 
@@ -10,8 +11,9 @@ int main(){
 		
 	int Ntests = 20;
 	int N = 10;
-	int n[N] = {100, 200, 500, 700, 1000, 2000, 5000, 7000, 10000, 20000};
+	int n[N] = {600, 800, 1000, 2000, 4000, 5000,6000, 8000,10000, 20000};
 	int seed = 4274;
+	ofstream outputFile("data.txt");
 	
 	for (int i = 0; i < N; i++)
 	{
@@ -35,17 +37,19 @@ int main(){
 			auto duration2 = duration_cast<microseconds>(stop2 - start2);
 			
 			stdSortingTime[j] = duration.count();
-			mergeSortingTime[j] = duration2.count();
-		 
+			mergeSortingTime[j] = duration2.count(); 
 		}
-		cout << "Duration (us) of std sorting vs merge sorting of " << n[i] 
-		<< " elements " << endl;
-	    cout << mean(stdSortingTime,Ntests) << " (+/-" << int(rms(stdSortingTime,Ntests))
-	    <<") | "  <<  mean(mergeSortingTime,Ntests) << " (+/-" << int(rms(mergeSortingTime,Ntests))
-	    <<")" << endl;
+		
+		cout << "Duration (us) of std sorting vs merge sorting of " << n[i] << " elements " << endl;
+	    cout << mean(stdSortingTime,Ntests) << " (+/-" << int(rms(stdSortingTime,Ntests)) << ") | " 
+	         << mean(mergeSortingTime,Ntests) << " (+/-" << int(rms(mergeSortingTime,Ntests)) << ")" << endl;
+	
+		outputFile << n[i] << " " <<  mean(stdSortingTime,Ntests) << " " << rms(stdSortingTime,Ntests) << " "
+				   << mean(mergeSortingTime,Ntests) << " " << rms(mergeSortingTime,Ntests) << endl;
 		
 		delete [] stdSortingTime;
 		delete [] mergeSortingTime;
 	}
+	outputFile.close();
 	return 0;
 }
