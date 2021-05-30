@@ -16,7 +16,6 @@ sigmastdsort = np.array([])
 meanmergesort = np.array([])
 sigmamergesort = np.array([])
 
-N = 0
 f = open("data.txt", "r")
 for inputdata in f:
 	x = np.append(x, float(inputdata.split(' ')[0]))
@@ -24,7 +23,6 @@ for inputdata in f:
 	sigmastdsort = np.append(sigmastdsort, float(inputdata.split(' ')[2]))
 	meanmergesort = np.append(meanmergesort, float(inputdata.split(' ')[3]))
 	sigmamergesort = np.append(sigmamergesort, float(inputdata.split(' ')[4]))
-	N = N + 1
 
 #fitting & plotting
 popt, pcov = curve_fit(func1, x, meanstdsort, sigma = sigmastdsort)
@@ -38,7 +36,7 @@ plt.plot(x, func2(x, *popt2), color = 'orange',label='Merge sorting - fit O(nlog
 meanExp = func1(x, *popt)
 r = meanstdsort - meanExp
 chisq = np.sum((r/sigmastdsort)**2)
-df = N - 2
+df = len(meanstdsort)-2
 print("Reduced chi^2 standard sorting = ", round((chisq / df),2))
 meanExp2 = func2(x, *popt2)
 r2 = meanmergesort - meanExp2
@@ -50,5 +48,6 @@ plt.title("Standard vs merge sorting - ./example results", weight ="bold")
 plt.xlabel('Number of elements')
 plt.ylabel(' \u03BC s to sort')
 plt.legend()
+#plt.xscale('log')
 plt.yscale('log')
 plt.show()
