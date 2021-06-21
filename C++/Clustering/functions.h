@@ -2,6 +2,7 @@
 #define _functions_h_
 #include <climits>
 #include <iostream>
+#include <string>
 using namespace std;
 
 void loadMatrix(int *, float, int, int);
@@ -10,7 +11,7 @@ void doUnion(int *, int, int);
 void unionCoords(int *, int, int, int, int, int, int, int , int);
 void clustering(int *, int, int, bool);
 int getNumberOfRegions(int *, int, int);
-
+void printPrettyMatrix(int *, int, int);
 
 void loadMatrix(int *v, float p,int sizex, int sizey)
 {
@@ -19,13 +20,9 @@ void loadMatrix(int *v, float p,int sizex, int sizey)
     {
   		 float r = (float) rand()/RAND_MAX;
 		 if (r > p)
-		 {
 			 v[i] = int(0);
-		 }
 		 else
-		 {
 			 v[i] = int(1);
-		 }
 	}
 }
 
@@ -33,10 +30,9 @@ void printMatrix(int *v ,int sizex, int sizey)
 {
     for (int i = 0; i < sizex; i++)
     {
+		cout << "  ";
 		for (int j = 0; j < sizey; j++) 
-		{
 			cout << v[i*sizey+j] << " "; 
-		}
 		cout << endl;
     }
 }
@@ -76,8 +72,8 @@ void clustering(int *array ,int w, int h,bool four)
 			{
 				unionCoords(component, array[x*h+y], array[(x+1)*h+y], x, y, x+1, y, h, w);
 				unionCoords(component, array[x*h+y], array[x*h+(y+1)], x, y, x, y+1, h, w);
-				unionCoords(component, array[x*h+y], array[(x+1)*h+(y+1)], x, y, x+1, y+2, h, w);
 				unionCoords(component, array[x*h+y], array[(x+1)*h+(y+1)], x, y, x+1, y+1, h, w);
+				unionCoords(component, array[x*h+y], array[(x+1)*h+(y-1)], x, y, x+1, y-1, h, w);
 			}
 		}
 	}
@@ -87,34 +83,33 @@ void clustering(int *array ,int w, int h,bool four)
         for (int y = 0; y < h; y++)
         {
             if (array[x*h+y] == 0)
-            {
                 continue;
-            }
             
             int c = x*h + y;
-            while (component[c] != c){
+            while (component[c] != c)
 				c = component[c];
-			}
 			array[x*h+y] = c; 
         }
     }
 }
 
-int getNumberOfRegions(int* matrix, int w, int h){
-	
+int getNumberOfRegions(int* matrix, int w, int h){	
 	int dim = 1;
 	double * v = new double[dim];
 	v[0]=0;
 	
-	for (int k = 0; k < w; k++){
-		for (int l = 0; l < h; l++){
+	for (int k = 0; k < w; k++)
+	{
+		for (int l = 0; l < h; l++)
+		{
 			int count2 = 0;
-			for(int d = 0; d < dim; d++){
-				if(v[d] != matrix[k*h+l]){
-					count2++;
-				}	
+			for(int d = 0; d < dim; d++)
+			{
+				if(v[d] != matrix[k*h+l])
+					count2++;	
 			}
-			if (count2 == dim){	
+			if (count2 == dim)
+			{	
 				v[dim] = matrix[k*h+l];
 				dim++;
 			}
@@ -124,6 +119,47 @@ int getNumberOfRegions(int* matrix, int w, int h){
 	return dim-1;
 }
 
+void printPrettyMatrix(int* matrix, int w, int h)
+{
+    int dim = 1;
+	double *v = new double[dim];
+	v[0]=0;
 
+	for (int k = 0; k < w; k++)
+	{
+		for (int l = 0; l < h; l++)
+		{
+			int count2 = 0;
+			for(int d = 0; d < dim; d++)
+			{
+				if(v[d] != matrix[k*h+l])
+					count2++;	
+			}
+			if (count2 == dim)
+			{	
+				v[dim] = matrix[k*h+l];
+				dim++;
+				
+			}
+		}
+	}
+
+	for (int k = 0; k < w; k++){
+		cout << "  ";
+		for (int l = 0; l < h; l++)
+		{
+			for (int i = 0; i < dim; i++)
+			{
+				if (matrix[k*h+l] == v[i])
+				{
+					cout << i << " ";
+					break;
+				}
+			}
+		}
+		cout << endl;
+	}	
+	delete[] v;
+}
 
 #endif //_functions_h_
