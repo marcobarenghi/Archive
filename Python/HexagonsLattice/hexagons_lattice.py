@@ -1,14 +1,15 @@
 import click
 import math
 from PIL import Image, ImageDraw
+from typing import List, Tuple
 
 """
 Example usage
-
+Python 3.9.5
 python hexagons_lattice.py --x-dim 1920 --y-dim 1080 --hexagon-dim 20 --edge-width 1 --background-color black --edge-color white --central-color darkred --output lattice_1.png
 """
 
-def hexagon_vertices(center_x: int, center_y: int, size: int) -> list[tuple[float, float]]:
+def hexagon_vertices(center_x: int, center_y: int, size: int) -> List[Tuple[float, float]]:
     """ Generate the vertices of a regular hexagon centered at (center_x, center_y).
 
     Args
@@ -36,7 +37,7 @@ def draw_lattice(x_dim: int, y_dim: int, hexagon_dim: int, edge_width: int, back
         y_dim: height of the image in pixels
         hexagon_dim: radius of each hexagon
         edge_width: width of the hexagon edges
-        background_color: background color of the imag
+        background_color: background color of the image
         edge_color: edge color of the hexagons
         central_color: color for the central hexagon
     
@@ -88,8 +89,8 @@ def draw_lattice(x_dim: int, y_dim: int, hexagon_dim: int, edge_width: int, back
 @click.option('--central-color', default='red', help="Color of the central hexagon")
 @click.option('--output', default='lattice.png', help="Output file name")
 
-def main(x_dim, y_dim, hexagon_dim, background_color, edge_color, central_color, edge_width, output):
-    image = draw_lattice(x_dim, y_dim, hexagon_dim, background_color, edge_color, central_color, edge_width)
+def main(x_dim, y_dim, hexagon_dim, edge_width, background_color, edge_color, central_color, output):
+    image = draw_lattice(x_dim, y_dim, hexagon_dim, edge_width, background_color, edge_color, central_color)
     image.save(output)
     print(f"Lattice image saved as {output}")
 
